@@ -4,9 +4,13 @@ import { ConnectBtn } from './Components/ConnectBtn/ConnectBtn';
 // Rainbowkit imports
 import {
   connectorsForWallets, 
-  wallet, 
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
+
+import {
+  omniWallet,ledgerWallet, rainbowWallet, coinbaseWallet, metaMaskWallet, walletConnectWallet, trustWallet, braveWallet
+} from '@rainbow-me/rainbowkit/wallets';
+
 import '@rainbow-me/rainbowkit/styles.css';
 
 // Wagmi imports 
@@ -34,19 +38,20 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.metaMask({ chains }),
-      wallet.injected({ chains }),
-      wallet.walletConnect({ chains }),
-      wallet.trust({ chains }),
+      metaMaskWallet({ chains }),
+      injectedWallet({ chains }),
+      walletConnectWallet({ chains }),
+      trustWallet({ chains }),
     ]
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.coinbase({ chains }),
-      wallet.rainbow({ chains }),
-      wallet.ledger({ chains }),
-      wallet.omni({ chains })
+      coinbaseWallet({ chains }),
+      rainbowWallet({ chains }),
+      ledgerWallet({ chains }),
+      omniWallet({ chains }),
+      braveWallet({chains})
     ]
   }
 ])
